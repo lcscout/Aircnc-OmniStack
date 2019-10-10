@@ -8,13 +8,15 @@ import Routes from './routes'
 
 function App() {
     return (
-        <div className="container">
-            <img src={logo} alt="AirCnC logo" />
+		<>
+			<div className="container">
+				<img src={logo} alt="AirCnC logo" />
 
-            <div className="content">
-                <Routes />
-            </div>
-        </div>
+				<div className="content">
+					<Routes />
+				</div>
+			</div>
+		</>
     )
 }
 

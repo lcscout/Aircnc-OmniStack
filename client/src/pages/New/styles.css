@@ -21,3 +21,141 @@ label#thumbnail.has-thumbnail {
 label#thumbnail.has-thumbnail img {
     display: none;
 }
+
+.btnCancel {
+	width: 100%;
+	height: 42px;
+	border: 1px solid #f05a5b;
+	border-radius: 2px;
+	padding: 0 20px;
+	font-size: 16px;
+	font-weight: bold;
+	background: #fff;
+	color: #f05a5b;
+	cursor: pointer;
+}
+
+.btnCancel:hover {
+	-webkit-animation: cancel-alert 1s infinite;
+  	-moz-animation:    cancel-alert 1s infinite;
+  	-o-animation:      cancel-alert 1s infinite;
+  	animation:         cancel-alert 1s infinite;
+}
+
+@-webkit-keyframes cancel-alert {
+	0% {
+		background: #fff;
+		color: #f05a5b;
+	}
+	50% {
+		background: #e14f50;
+		color: #fff;
+	}
+	100% {
+		background: #fff;
+		color: #f05a5b;
+	}
+}
+
+@-moz-keyframes cancel-alert {
+	0% {
+		background: #fff;
+		color: #f05a5b;
+	}
+	50% {
+		background: #e14f50;
+		color: #fff;
+	}
+	100% {
+		background: #fff;
+		color: #f05a5b;
+	}
+}
+
+@-o-keyframes cancel-alert {
+	0% {
+		background: #fff;
+		color: #f05a5b;
+	}
+	50% {
+		background: #e14f50;
+		color: #fff;
+	}
+	100% {
+		background: #fff;
+		color: #f05a5b;
+	}
+}
+
+@keyframes cancel-alert {
+	0% {
+		background: #fff;
+		color: #f05a5b;
+	}
+	50% {
+		background: #e14f50;
+		color: #fff;
+	}
+	100% {
+		background: #fff;
+		color: #f05a5b;
+	}
+}
+
+.sure {
+	position: absolute;
+	display: flex;
+	border: 1px solid #f05a5b;
+	border-radius: 2px;
+	background: #fafafa;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-top: -370px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-left: -100px;
+	width: 600px;
+	height: 200px;
+	flex-wrap: wrap;
+}
+
+.sure p {
+	color: #444;
+	width: 100%;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.sure button {
+	width: 25%;
+	height: 42px;
+	border: 0;
+	border-radius: 2px;
+	padding: 0 20px;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 10px;
+	cursor: pointer;
+	background: #dadada;
+}
+
+.sure button.yes {
+	color: #fff;
+	background: #0bb94e;
+}
+
+.sure button.yes:hover {
+	background: #0ba546;
+}
+
+.sure button.no {
+	color: #fff;
+	background: #f05a5b;
+}
+
+.sure button.no:hover {
+	background: #e14f50;
+}

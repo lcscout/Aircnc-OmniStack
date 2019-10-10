@@ -6,7 +6,7 @@ import api from '../../services/api'
 
 import './styles.css'
 
-export default function Dashboard() {
+export default function Dashboard(props) {
 	const [spots, setSpots] = useState([])
 	const [requests, setRequests] = useState([])
 
@@ -22,10 +22,11 @@ export default function Dashboard() {
 	}, [requests, socket])
 
     useEffect(() => {
+		props.forceForce()
         async function loadSpots() {
-            const user_id = localStorage.getItem('user')
+            const user_token = localStorage.getItem('auth-token')
             const response = await api.get('/dashboard', {
-                headers: { user_id }
+                headers: { 'auth-token': user_token }
             })
 
             setSpots(response.data)
