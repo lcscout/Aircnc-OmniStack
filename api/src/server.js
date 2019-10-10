@@ -1,11 +1,19 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const cors = require('cors')
 const path = require('path')
 const http = require('http')
 const socketio = require('socket.io')
+const dotenv = require('dotenv')
+
+const cors = require('cors')
+
+const corsOptions = {
+	exposedHeaders: 'auth-token'
+}
 
 const routes = require('./routes')
+
+dotenv.config()
 
 const app = express()
 const server = http.Server(app)
@@ -13,11 +21,12 @@ const io = socketio(server)
 
 
 mongoose.connect(
-    'mongodb+srv://user:senhauser@backend-le7re.mongodb.net/semana09?retryWrites=true&w=majority',
+    process.env.MONGO_URI,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
-    }
+	},
+	() => console.log("Connected to Mongo!")
 )
 
 const connectedUsers = {}
@@ -35,7 +44,7 @@ app.use((req, res, next) => {
 	return next()
 })
 
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')))
 app.use(routes)
