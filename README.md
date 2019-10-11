@@ -1,5 +1,9 @@
 ## Aircnc
 
+<p align="center">
+  <img width="auto" height="auto" src="aircnc-mockup.png">
+</p>
+
 A clone app of Airbnb where companies can offer lodging, bootcamp and new experiences for developers.
 
 Aircnc is a full stack app using *Node.js* as backend, *ReactJS* as front and *React Native* for mobile. This application was made following the **OmniStack Week** from Rocketseat.
