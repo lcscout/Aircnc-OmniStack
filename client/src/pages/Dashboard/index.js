@@ -10,7 +10,9 @@ export default function Dashboard(props) {
 	const [spots, setSpots] = useState([])
 	const [requests, setRequests] = useState([])
 
+	const user_token = localStorage.getItem('auth-token')
 	const user_id = localStorage.getItem('user')
+
 	const socket = useMemo(() => socketio('http://localhost:3333', {
 		query: { user_id },
 	}), [user_id])
@@ -24,7 +26,6 @@ export default function Dashboard(props) {
     useEffect(() => {
 		props.forceForce()
         async function loadSpots() {
-            const user_token = localStorage.getItem('auth-token')
             const response = await api.get('/dashboard', {
                 headers: { 'auth-token': user_token }
             })
@@ -36,13 +37,17 @@ export default function Dashboard(props) {
 	}, [])
 
 	async function handleAccept(id) {
-		await api.post(`/bookings/${id}/approvals`)
+		await api.post(`/bookings/${id}/approvals`, {}, {
+			headers: { 'auth-token': user_token }
+		})
 
 		setRequests(requests.filter(request => request._id !== id))
 	}
 
 	async function handleReject(id) {
-		await api.post(`/bookings/${id}/rejections`)
+		await api.post(`/bookings/${id}/rejections`, {}, {
+			headers: { 'auth-token': user_token }
+		})
 
 		setRequests(requests.filter(request => request._id !== id))
 	}
