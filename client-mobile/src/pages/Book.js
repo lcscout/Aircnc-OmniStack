@@ -8,12 +8,13 @@ export default function Book({ navigation }) {
 	const id = navigation.getParam('id')
 
 	async function handleSubmit() {
+		const token = await AsyncStorage.getItem('auth-token')
 		const user_id = await AsyncStorage.getItem('user')
 
 		await api.post(`/spots/${id}/bookings`, {
 			date
 		}, {
-			headers: { user_id }
+			headers: { 'auth-token': token, user_id }
 		})
 
 		Alert.alert('Solicitação de reserva enviada.')

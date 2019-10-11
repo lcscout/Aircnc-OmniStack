@@ -8,6 +8,11 @@ import logo from '../assets/logo.png'
 
 export default function List() {
 	const [techs, setTechs] = useState([])
+	const [token, setToken] = useState('')
+
+	AsyncStorage.getItem('auth-token').then(token => {
+		setToken(token)
+	})
 
 	useEffect(() => {
 		AsyncStorage.getItem('user').then(user_id => {
@@ -34,7 +39,7 @@ export default function List() {
 			<Image style={styles.logo} source={logo} />
 
 			<ScrollView>
-				{techs.map(tech => <SpotList key={tech} tech={tech} />)}
+				{techs.map(tech => <SpotList key={tech} tech={tech} token={token} />)}
 			</ScrollView>
 		</SafeAreaView>
 	)

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { withNavigation } from 'react-navigation'
-import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity, AsyncStorage } from 'react-native'
 
 import api from '../services/api'
 
-function SpotList({ tech, navigation }) {
+function SpotList({ token, tech, navigation }) {
 	const [spots, setSpots] = useState([])
 
 	useEffect(() => {
 		async function loadSpots() {
 			const response = await api.get('/spots', {
-				params: { tech }
+				params: { tech },
+				headers: { 'auth-token': token }
 			})
 
 			setSpots(response.data)

@@ -7,6 +7,7 @@ import logo from '../assets/logo.png'
 
 export default function Login({ navigation }) {
 	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
 	const [techs, setTechs] = useState('')
 
 	useEffect(() => {
@@ -19,13 +20,15 @@ export default function Login({ navigation }) {
 
 	async function handleSubmit() {
 		const response = await api.post('/sessions', {
-			email
+			email, password
 		})
 
 		const { _id } = response.data
+		const token = response.headers['auth-token']
 
 		await AsyncStorage.setItem('user', _id)
 		await AsyncStorage.setItem('techs', techs)
+		await AsyncStorage.setItem('auth-token', token)
 
 		navigation.navigate('List')
 	}
@@ -49,6 +52,18 @@ export default function Login({ navigation }) {
 				autoCorrect={false}
 				value={email}
 				onChangeText={setEmail}
+			/>
+
+			<Text style={styles.label}>SENHA *</Text>
+			<TextInput
+				secureTextEntry={true}
+				style={styles.input}
+				placeholder="Sua senha secreta"
+				placeholderTextColor="#999"
+				autoCapitalize="none"
+				autoCorrect={false}
+				value={password}
+				onChangeText={setPassword}
 			/>
 
 			<Text style={styles.label}>TECNOLOGIAS *</Text>
