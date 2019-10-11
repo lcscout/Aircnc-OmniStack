@@ -7,7 +7,7 @@ import camera from '../../assets/camera.svg'
 
 import './styles.css'
 
-export default function New(props, { history }) {
+export default function New(props) {
     const [thumbnail, setThumbnail] = useState(null)
     const [company, setCompany] = useState('')
     const [techs, setTechs] = useState('')
@@ -37,7 +37,7 @@ export default function New(props, { history }) {
             headers: { 'auth-token': user_token }
         })
 
-        history.push('/dashboard')
+        props.history.push('/dashboard')
 	}
 
     return (
