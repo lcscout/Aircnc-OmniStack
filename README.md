@@ -10,7 +10,7 @@ Aircnc is a full stack app using *Node.js* as backend, *ReactJS* as front and *R
 
 ## Dependencies
 
-To run locally you'll need to run `npm install` on each part (api, client and client-mobile) because they have their own depencies.
+To run locally you'll need to run `npm install` on each part (api, client and client-mobile) because they have their own dependencies.
 
 ### Api
 `npm run dev`
